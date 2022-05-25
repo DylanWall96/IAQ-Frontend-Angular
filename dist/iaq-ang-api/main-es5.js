@@ -48,7 +48,7 @@
       var environment = {
         production: false,
         //apiBaseUrl: 'http://iaqhub.eu-west-1.elasticbeanstalk.com/api/iaq',
-        apiBaseUrl: 'http://localhost:8080/api/iaq'
+        apiBaseUrl: 'http://192.168.1.246:8080/api/iaq'
       };
       /*
        * For easier debugging in development mode, you can import the following file
