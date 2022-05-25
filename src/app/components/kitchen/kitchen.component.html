@@ -1,0 +1,586 @@
+<div id="content-wrapper" class="d-flex flex-column">
+  <!-- End of Sidebar -->
+
+  <!-- Content Wrapper -->
+
+  <!-- Main Content -->
+  <div id="content">
+    <!-- Topbar -->
+
+    <!-- End of Topbar -->
+
+    <!-- Begin Page Content -->
+
+    <!-- Page Heading -->
+
+    <div class="container-fluid">
+      <div class="container-fluid">
+        <div class="row" style="width: 100%">
+          <div class="col-sm-12">
+            <div class="row">
+              <div class="col">
+                <div ngbDropdown class="d-inline-block">
+                  <button
+                    class="btn btn-outline-grey"
+                    id="dropdownBasic1"
+                    ngbDropdownToggle
+                  >
+                    Change Location
+                  </button>
+                  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button
+                      ngbDropdownItem
+                      type="button"
+                      (click)="kitchenFunc()"
+                      class="btn btn-light"
+                    >
+                      Kitchen
+                    </button>
+                    <button
+                      ngbDropdownItem
+                      type="button"
+                      (click)="officeFunc()"
+                      class="btn btn-light"
+                    >
+                      Office
+                    </button>
+                    <button
+                      ngbDropdownItem
+                      type="button"
+                      (click)="barFunc()"
+                      class="btn btn-light"
+                    >
+                      Bar
+                    </button>
+                  </div>
+                  <button
+                    type="button"
+                    class="btn btn-outline-grey"
+                    type="button"
+                    (click)="stopDataFunc()"
+                  >
+                    Stop Live Data
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-2">
+            <div class="card shadow mb-10">
+              <div class="card-header py-3">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <h6
+                      class="m-0 font-weight-bold text-info"
+                      style="text-align: center"
+                    >
+                      Data Update -
+                    </h6>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card border-left-info shadow">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <h1
+                        class="m-0 font-weight-bold text-dark"
+                        style="text-align: center"
+                      >
+                        {{ counter.sec }}
+                      </h1>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-10">
+            <div class="card shadow mb-10">
+              <div class="card-header py-3">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <h6
+                      class="m-0 font-weight-bold text-danger"
+                      style="text-align: center"
+                    >
+                      Location -
+                    </h6>
+                  </div>
+
+                  <div class="col-sm-4">
+                    <h6
+                      class="m-0 font-weight-bold text-danger"
+                      style="text-align: center"
+                    >
+                      Indoor Air Quality (IAQ) Score -
+                    </h6>
+                  </div>
+
+                  <div class="col-sm-4">
+                    <h6
+                      class="m-0 font-weight-bold text-danger"
+                      style="text-align: center"
+                    >
+                      Overall Air Quality -
+                    </h6>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card border-left-danger shadow">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <h1
+                        class="m-0 font-weight-bold text-dark"
+                        style="text-align: center"
+                        id="location"
+                      ></h1>
+                    </div>
+                    <div class="col-sm-4">
+                      <h1
+                        class="m-0 font-weight-bold text-dark"
+                        style="text-align: center"
+                        id="score"
+                      ></h1>
+                    </div>
+
+                    <div class="col-sm-4">
+                      <h6 style="text-align: center" id="IAQ-box"></h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr />
+
+        <!-- Content Row -->
+        <div class="row">
+          <!-- Earnings (Monthly) Card Example -->
+          <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div
+                      class="
+                        text-xs
+                        font-weight-bold
+                        text-primary text-uppercase
+                        mb-1
+                      "
+                    >
+                      Temperature (Celcius)
+                    </div>
+                    <div
+                      class="h5 mb-0 font-weight-bold text-gray-800"
+                      id="temp"
+                    >
+                      &deg;C
+                    </div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fa fa-thermometer-half fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Earnings (Monthly) Card Example -->
+          <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div
+                      class="
+                        text-xs
+                        font-weight-bold
+                        text-success text-uppercase
+                        mb-1
+                      "
+                    >
+                      Pressure
+                    </div>
+                    <div
+                      class="h5 mb-0 font-weight-bold text-gray-800"
+                      id="pres"
+                    >
+                      hPa
+                    </div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-tachometer-alt fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Earnings (Monthly) Card Example -->
+          <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div
+                      class="
+                        text-xs
+                        font-weight-bold
+                        text-info text-uppercase
+                        mb-1
+                      "
+                    >
+                      Humidity
+                    </div>
+                    <div class="row no-gutters align-items-center">
+                      <div class="col-auto">
+                        <div
+                          class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
+                          id="hum"
+                        >
+                          %
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-tint fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pending Requests Card Example -->
+          <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div
+                      class="
+                        text-xs
+                        font-weight-bold
+                        text-warning text-uppercase
+                        mb-1
+                      "
+                    >
+                      Gas Resistance (&#8486;)
+                    </div>
+                    <div
+                      class="h5 mb-0 font-weight-bold text-gray-800"
+                      id="gas"
+                    ></div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-burn fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-danger shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div
+                      class="
+                        text-xs
+                        font-weight-bold
+                        text-danger text-uppercase
+                        mb-1
+                      "
+                    >
+                      24 hour gas average (&#8486;)
+                    </div>
+                    <div
+                      class="h5 mb-0 font-weight-bold text-gray-800"
+                      id="kitchenavg"
+                    ></div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-burn fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-danger shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div
+                      class="
+                        text-xs
+                        font-weight-bold
+                        text-danger text-uppercase
+                        mb-1
+                      "
+                    >
+                      1 Hour gas average (&#8486;)
+                    </div>
+                    <div
+                      class="h5 mb-0 font-weight-bold text-gray-800"
+                      id="kitchenhouravg"
+                    ></div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-burn fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-danger shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div
+                      class="
+                        text-xs
+                        font-weight-bold
+                        text-danger text-uppercase
+                        mb-1
+                      "
+                    >
+                      Last Updated
+                    </div>
+                    <div
+                      class="h5 mb-0 font-weight-bold text-gray-800"
+                      id="last-recorded"
+                    ></div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-clock fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-danger shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div
+                      class="
+                        text-xs
+                        font-weight-bold
+                        text-danger text-uppercase
+                        mb-1
+                      "
+                    >
+                      current time (BST)
+                    </div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                      {{ now }}
+                    </div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-clock fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content Row -->
+        <hr />
+
+        <!-- Area Chart -->
+        <div class="col-xl-12">
+          <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div
+              class="
+                card-header
+                py-3
+                d-flex
+                flex-row
+                align-items-center
+                justify-content-between
+              "
+            >
+              <h6 class="m-0 font-weight-bold text-primary">
+                Temperature Time Series
+              </h6>
+            </div>
+            <!-- Card Body -->
+
+            <div class="card-body">
+              <div class="row">
+                <div class="chart-area">
+                  <canvas
+                    id="tempGraph"
+                    style="display: block; height: 100%; width: 100%"
+                  ></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-12">
+          <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div
+              class="
+                card-header
+                py-3
+                d-flex
+                flex-row
+                align-items-center
+                justify-content-between
+              "
+            >
+              <h6 class="m-0 font-weight-bold text-success">
+                Pressure Time Series
+              </h6>
+            </div>
+
+            <div class="card-body">
+              <div class="row">
+                <div class="chart-area">
+                  <canvas
+                    id="presGraph"
+                    style="display: block; height: 100%; width: 100%"
+                  ></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- First Row of Graphs -->
+
+        <!-- Area Chart -->
+        <div class="col-xl-12">
+          <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div
+              class="
+                card-header
+                py-3
+                d-flex
+                flex-row
+                align-items-center
+                justify-content-between
+              "
+            >
+              <h6 class="m-0 font-weight-bold text-info">
+                Humidity Time Series
+              </h6>
+            </div>
+            <!-- Card Body -->
+
+            <div class="card-body">
+              <div class="row">
+                <div class="chart-area">
+                  <canvas
+                    id="humGraph"
+                    style="display: block; height: 100%; width: 100%"
+                  ></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-12">
+          <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div
+              class="
+                card-header
+                py-3
+                d-flex
+                flex-row
+                align-items-center
+                justify-content-between
+              "
+            >
+              <h6 class="m-0 font-weight-bold text-warning">
+                Gas Resistance Time Series
+              </h6>
+            </div>
+
+            <div class="card-body">
+              <div class="row">
+                <div class="chart-area">
+                  <canvas
+                    id="gasGraph"
+                    style="display: block; height: 100%; width: 100%"
+                  ></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-12">
+            <div class="card shadow mb-4">
+              <!-- Card Header - Dropdown -->
+              <div
+                class="
+                  card-header
+                  py-3
+                  d-flex
+                  flex-row
+                  align-items-center
+                  justify-content-between
+                "
+              >
+                <h6 class="m-0 font-weight-bold text-danger">
+                  Indoor Air Quality Score (IAQ)
+                </h6>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="chart-area">
+                    <canvas
+                      id="scoreGraph"
+                      style="display: block; height: 100%; width: 100%"
+                    ></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content Row -->
+        <div class="row">
+          <!-- /.container-fluid -->
+        </div>
+        <!-- End of Main Content -->
+      </div>
+      <!-- End of Content Wrapper -->
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>IoT Air Quality</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
+  </div>
+</div>
