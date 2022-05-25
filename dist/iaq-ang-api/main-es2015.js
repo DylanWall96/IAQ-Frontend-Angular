@@ -27,7 +27,8 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 const environment = {
     production: false,
-    apiBaseUrl: 'http://iaqhub.eu-west-1.elasticbeanstalk.com/api/iaq',
+    //apiBaseUrl: 'http://iaqhub.eu-west-1.elasticbeanstalk.com/api/iaq',
+    apiBaseUrl: 'http://localhost:8080/api/iaq',
 };
 /*
  * For easier debugging in development mode, you can import the following file
